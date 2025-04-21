@@ -1,0 +1,19 @@
+### Criar conta para usuário 1 no Banco do Brasil (id instituição = 1)
+POST http://localhost:3000/usuarios/1/contas
+Content-Type: application/json
+
+{
+  "institutionId": 1,
+  "balance": 1000
+}
+
+###
+
+### Criar conta para usuário 1 no Itaú (id instituição = 2)
+POST http://localhost:3000/usuarios/1/contas
+Content-Type: application/json
+
+{
+  "institutionId": 2,
+  "balance": 500
+}

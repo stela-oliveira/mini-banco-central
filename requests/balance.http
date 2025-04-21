@@ -1,0 +1,7 @@
+### Ver saldo total do usuário 1
+GET http://localhost:3000/usuarios/1/saldo
+
+###
+
+### Ver saldo apenas do Itaú
+GET http://localhost:3000/usuarios/1/saldo?instituicao=Itaú
