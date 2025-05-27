@@ -1,7 +1,8 @@
 const express = require('express');
 const router = express.Router();
+const InstitutionController = require('../controllers/institutionController');
 
-module.exports = (institutionController) => {
-  router.post('/instituicoes', (req, res) => institutionController.create(req, res));
-  return router;
-};
+router.post('/instituicoes', InstitutionController.createInstitution);
+router.get('/instituicoes', InstitutionController.getAllInstitutions);
+
+module.exports = router;

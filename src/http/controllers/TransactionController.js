@@ -1,13 +1,26 @@
-class TransactionController {
-  constructor(addTransaction) {
-    this.addTransaction = addTransaction;
-  }
+const TransactionService = require('../../domain/services/TransactionService');
 
-  async create(req, res) {
+module.exports = {
+  async addTransaction(req, res) {
     const { id: userId } = req.params;
-    const transaction = await this.addTransaction.execute({ ...req.body, userId });
-    res.status(201).json(transaction);
-  }
-}
+    const { accountId, type, amount } = req.body;
 
-module.exports = TransactionController;
+    const transaction = await TransactionService.addTransaction(userId, accountId, { type, amount });
+    res.status(201).json(transaction);
+  },
+
+  async getUserTransactions(req, res) {
+    const { id: userId } = req.params;
+    const { institution } = req.query;
+
+    let transactions;
+
+    if (institution) {
+      transactions = await TransactionService.getUserTransactionsByInstitution(userId, institution);
+    } else {
+      transactions = await TransactionService.getUserTransactions(userId);
+    }
+
+    res.json(transactions);
+  }
+};

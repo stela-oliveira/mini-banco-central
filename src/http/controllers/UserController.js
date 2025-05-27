@@ -1,12 +1,15 @@
-class UserController {
-  constructor(createUser) {
-    this.createUser = createUser;
-  }
+const UserService = require('../../domain/services/UserService');
 
-  async create(req, res) {
-    const user = await this.createUser.execute(req.body);
+module.exports = {
+  async createUser(req, res) {
+    const { name, consentToShare } = req.body;
+    const user = await UserService.createUser({ name, consentToShare });
     res.status(201).json(user);
-  }
-}
+  },
 
-module.exports = UserController;
+  async getUserDetails(req, res) {
+    const { id } = req.params;
+    const user = await UserService.getUserWithDetails(id);
+    res.json(user);
+  }
+};

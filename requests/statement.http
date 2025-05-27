@@ -1,7 +1,0 @@
-### Extrato completo do usuário 1
-GET http://localhost:3000/usuarios/1/extrato
-
-###
-
-### Extrato do usuário 1 filtrado por instituição (Banco do Brasil)
-GET http://localhost:3000/usuarios/1/extrato?instituicao=Banco%20do%20Brasil

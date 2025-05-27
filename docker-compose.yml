@@ -1,17 +1,13 @@
-version: '3.8'
-
 services:
-  postgres:
+  db:
     image: postgres:15
-    container_name: mini-banco-postgres
     environment:
+      POSTGRES_DB: mini-banco-central
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: mini_banco_central
     ports:
       - "5432:5432"
     volumes:
       - pgdata:/var/lib/postgresql/data
-
 volumes:
   pgdata:

@@ -1,7 +1,8 @@
 class User {
-  constructor({ id, name }) {
+  constructor({ id, name, consentToShare }) {
     this.id = id;
     this.name = name;
+    this.consentToShare = consentToShare;
   }
 }
 

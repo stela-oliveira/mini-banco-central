@@ -1,5 +1,5 @@
 class Account {
-  constructor({ id, userId, institutionId, balance = 0 }) {
+  constructor({ id, userId, institutionId, balance }) {
     this.id = id;
     this.userId = userId;
     this.institutionId = institutionId;

@@ -1,12 +1,14 @@
-class InstitutionController {
-  constructor(createInstitution) {
-    this.createInstitution = createInstitution;
-  }
+const InstitutionService = require('../../domain/services/InstitutionService');
 
-  async create(req, res) {
-    const institution = await this.createInstitution.execute(req.body);
+module.exports = {
+  async createInstitution(req, res) {
+    const { name } = req.body;
+    const institution = await InstitutionService.createInstitution({ name });
     res.status(201).json(institution);
-  }
-}
+  },
 
-module.exports = InstitutionController;
+  async getAllInstitutions(req, res) {
+    const institutions = await InstitutionService.getAllInstitutions();
+    res.json(institutions);
+  }
+};

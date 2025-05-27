@@ -1,13 +1,16 @@
-class AccountController {
-  constructor(createAccount) {
-    this.createAccount = createAccount;
-  }
+const AccountService = require('../../domain/services/AccountService');
 
-  async create(req, res) {
-    const userId = req.params.id;
-    const account = await this.createAccount.execute({ ...req.body, userId });
+module.exports = {
+  async createAccount(req, res) {
+    const { id: userId } = req.params;
+    const { institutionId, balance } = req.body;
+    const account = await AccountService.createAccount({ userId, institutionId, balance });
     res.status(201).json(account);
-  }
-}
+  },
 
-module.exports = AccountController;
+  async getUserAccounts(req, res) {
+    const { id: userId } = req.params;
+    const accounts = await AccountService.getAccountsByUser(userId);
+    res.json(accounts);
+  }
+};

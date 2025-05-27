@@ -1,10 +1,9 @@
 class Transaction {
-  constructor({ id, accountId, type, amount, description, date }) {
+  constructor({ id, accountId, type, amount, date }) {
     this.id = id;
     this.accountId = accountId;
-    this.type = type;
+    this.type = type;  // 'credit' or 'debit'
     this.amount = amount;
-    this.description = description;
     this.date = date;
   }
 }
